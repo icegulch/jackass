@@ -1,0 +1,18 @@
+
+{% set currentUrl %}{{ page.fileSlug }}{% endset %}
+{% set lastItem %}{{ collections.orderedPages.length }}{% endset %}
+
+{% for page in collections.orderedPages %}
+  {% if currentUrl === page.fileSlug %}
+    <span aria-current="page">{{ page.data.title }}</span>
+  {% else %}
+    <a href="{{ page.url }}">{{ page.data.title }}</a>
+  {% endif %}
+   |
+{% endfor %}
+
+{% if page.url === '/' %}
+  <span aria-current="page">Home</span>
+{% else %}
+  <a href="/">Home</a>
+{% endif %}

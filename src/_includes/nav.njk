@@ -1,0 +1,13 @@
+{% set currentUrl %}{{ page.fileSlug }}{% endset %}
+
+<nav class="site-nav">
+  {% for page in collections.orderedPages %}
+    <span class="site-nav-item">
+      <a
+        {% if currentUrl === page.fileSlug %}aria-current="page"{% endif %}
+        href="{{ page.url }}">
+        {{ page.data.title }}
+      </a>
+    </span>
+  {%- endfor %}
+</nav>

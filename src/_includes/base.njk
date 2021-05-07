@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>
+    {{ title + ' | ' + site.title if title and title != 'With Brio' else site.title}}
+  </title>
+  <meta name="description" content="{{ site.meta_desc }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
+</head>
+<body>
+
+  <div class="container">
+    <header id="site-header" role="banner">
+      {% include "nav.njk" %}
+    </header>
+
+    <main id="site-main" role="main">
+      {% if page.url != '/' %}
+        <div class="link-back">
+          <a href="/">
+            <img src="/images/logo-sm.gif" width="300" height="170" alt="White Mountain Jackass Company" class="img-responsive">
+          </a>
+        </div>
+      {% endif %}
+      {{ content | safe }}
+    </main>
+
+    <footer id="site-footer" role="contentinfo"{% if page.url === '/' %} style="margin:50px 0 0;"{% endif %}>
+      {% include "footer.njk" %}
+    </footer>
+  </div>
+
+</body>
+</html>
