@@ -1,36 +1,18 @@
 {
-  "name": "Repos",
+  "name": "repos",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "watch:sass": "sass  --no-source-map --watch src/sass:public/css",
-    "watch:eleventy": "eleventy --serve",
-    "build:sass-site": "sass  --no-source-map src/sass/styles.scss public/css/styles.css",
-    "build:sass": "npm-run-all --parallel build:sass-site",
-    "build:eleventy": "eleventy",
-    "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r",
-    "start": "cross-env ELEVENTY_ENV=dev npm-run-all build:sass --parallel watch:*",
-    "build": "cross-env ELEVENTY_ENV=prod npm-run-all build:sass build:eleventy"
+    "clean": "del public",
+    "watch": "eleventy --serve",
+    "build": "ELEVENTY_ENV=prod eleventy",
+    "start": "ELEVENTY_ENV=dev eleventy --serve"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "autoprefixer": "^10.2.5",
-    "cross-env": "^7.0.3",
-    "cssnano": "^5.0.2",
-    "dotenv": "^9.0.0",
-    "html-minifier": "^4.0.0",
-    "luxon": "^1.26.0",
-    "markdown-it": "^10.0.0",
-    "npm-run-all": "^1.7.0",
-    "postcss": "^8.2.14",
-    "postcss-cli": "^8.3.1",
-    "sass": "^1.32.12"
-  },
-  "browserslist": [
-    "last 2 versions"
-  ]
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "del-cli": "^6.0.0",
+    "dotenv": "^17.2.0",
+    "html-minifier-terser": "^6.1.0"
+  }
 }
